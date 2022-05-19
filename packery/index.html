@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>packery grid</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<h1>Packery - layout, vanilla JS</h1>
+
+		<p>Click item to toggle size</p>
+
+		<div class="grid">
+			<div class="grid-item grid-item--width2"></div>
+			<div class="grid-item grid-item--height2"></div>
+			<div class="grid-item"></div>
+			<div class="grid-item"></div>
+			<div class="grid-item grid-item--width2 grid-item--height2"></div>
+			<div class="grid-item grid-item--width2"></div>
+			<div class="grid-item grid-item--width2"></div>
+			<div class="grid-item grid-item--height2"></div>
+			<div class="grid-item"></div>
+			<div class="grid-item grid-item--width2"></div>
+			<div class="grid-item grid-item--height2"></div>
+			<div class="grid-item"></div>
+			<div class="grid-item"></div>
+			<div class="grid-item grid-item--width2 grid-item--height2"></div>
+			<div class="grid-item"></div>
+			<div class="grid-item grid-item--width2"></div>
+			<div class="grid-item grid-item--height2"></div>
+			<div class="grid-item"></div>
+		</div>
+		<script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
+		<script>
+			const grid = document.querySelector('.grid');
+
+			const pckry = new Packery(grid, {
+				itemSelector: '.grid-item',
+			});
+
+			grid.addEventListener('click', function (event) {
+				// filter for grid-item clicks
+				if (!event.target.classList.contains('grid-item')) {
+					return;
+				}
+				event.target.classList.toggle('grid-item--large');
+				pckry.layout();
+			});
+		</script>
+	</body>
+</html>
